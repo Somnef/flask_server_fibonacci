@@ -1,15 +1,11 @@
 import flask
-import threading
 
 app = flask.Flask(__name__)
 
 # main route returns fibonacci number
 @app.route('/<int:n>')
 def fibonacci(n):
-    # create a thread to calculate fibonacci number
-    t = threading.Thread(target=fib, args=(n,))
-    t.start()
-    return f'Fibonacci number for {n} is being calculated in a separate thread'
+    return "Fibonacci number is: " + str(fib(n)) + "\n"
 
 # fibonacci function
 def fib(n):
